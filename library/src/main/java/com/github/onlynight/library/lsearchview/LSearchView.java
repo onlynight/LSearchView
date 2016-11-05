@@ -33,19 +33,27 @@ public class LSearchView extends LinearLayout implements AlphaAnimator, RevealAn
     private static final float DEFAULT_SEARCH_BAR_BACK_BUTTON_PADDING = 12;
     private static final float DEFAULT_SEARCH_BAR_SEARCH_BUTTON_PADDING = 12;
     private static final int DEFAULT_SEARCH_BAR_BG_COLOR = Color.argb(0xaa, 0, 0, 0);
-    private static final int DEFAULT_SEARCH_ANIM_TIME = 300;
+    private static final int DEFAULT_ANIM_TIME = 300;
+    private static final int DEFAULT_ANIM_ORIGIN_X = 23; //dp
+    private static final int DEFAULT_ANIM_ORIGIN_Y = 23; //dp
+    private static final int DEFAULT_IC_BACK = R.drawable.ic_back;
+    private static final int DEFAULT_IC_SEARCH = R.drawable.ic_search;
 
     private float searchBarHeight = 0;
     private float backBtnPadding = 0;
     private float searchBtnPadding = 0;
     private String searchHint = "";
-    private int searchBgColor;
+    private int searchBgColor = DEFAULT_SEARCH_BAR_BG_COLOR;
     private int animTime = 0;
+    private float originX = 0;
+    private float originY = 0;
+    private int icBack = DEFAULT_IC_BACK;
+    private int icSearch = DEFAULT_IC_SEARCH;
 
     private LinearLayout btnBackLayout;
     private EditText editSearch;
     private LinearLayout btnSearchLayout;
-    private LinearLayout btnClearLayout;
+    //    private LinearLayout btnClearLayout;
     private ImageView btnSearch;
     private ProgressBar progressBarSearch;
 
@@ -92,6 +100,7 @@ public class LSearchView extends LinearLayout implements AlphaAnimator, RevealAn
 
     private void init(TypedArray typedArray) {
         setOrientation(LinearLayout.VERTICAL);
+        setVisibility(INVISIBLE);
 
         if (typedArray != null) {
             searchBarHeight = typedArray.getDimension(
@@ -107,7 +116,15 @@ public class LSearchView extends LinearLayout implements AlphaAnimator, RevealAn
             searchBgColor = typedArray.getColor(R.styleable.LSearchView_search_bg_color,
                     DEFAULT_SEARCH_BAR_BG_COLOR);
             animTime = typedArray.getInteger(R.styleable.LSearchView_anim_time,
-                    DEFAULT_SEARCH_ANIM_TIME);
+                    DEFAULT_ANIM_TIME);
+            originX = typedArray.getDimension(R.styleable.LSearchView_anim_origin_x,
+                    DEFAULT_ANIM_ORIGIN_X);
+            originY = typedArray.getDimension(R.styleable.LSearchView_anim_origin_y,
+                    DEFAULT_ANIM_ORIGIN_Y);
+            icBack = typedArray.getResourceId(R.styleable.LSearchView_back_btn_icon,
+                    DEFAULT_IC_BACK);
+            icSearch = typedArray.getResourceId(R.styleable.LSearchView_search_btn_icon,
+                    DEFAULT_IC_SEARCH);
         } else {
             searchBarHeight = dp2px(getContext(),
                     DEFAULT_SEARCH_BAR_HEIGHT);
@@ -116,7 +133,9 @@ public class LSearchView extends LinearLayout implements AlphaAnimator, RevealAn
             searchBtnPadding = dp2px(getContext(),
                     DEFAULT_SEARCH_BAR_SEARCH_BUTTON_PADDING);
             searchBgColor = DEFAULT_SEARCH_BAR_BG_COLOR;
-            animTime = DEFAULT_SEARCH_ANIM_TIME;
+            animTime = DEFAULT_ANIM_TIME;
+            originX = dp2px(getContext(), DEFAULT_ANIM_ORIGIN_X);
+            originY = dp2px(getContext(), DEFAULT_ANIM_ORIGIN_Y);
         }
 
         targetBounds = new Rect();
@@ -139,7 +158,7 @@ public class LSearchView extends LinearLayout implements AlphaAnimator, RevealAn
                 (int) (searchBarHeight - backBtnPadding * 2),
                 (int) (searchBarHeight - backBtnPadding * 2));
         btnBack.setLayoutParams(btnBackLayoutParams);
-        btnBack.setImageResource(R.drawable.ic_back);
+        btnBack.setImageResource(icBack);
 
         btnBackLayout = new LinearLayout(getContext());
         LayoutParams temp = new LayoutParams((int) searchBarHeight,
@@ -165,7 +184,7 @@ public class LSearchView extends LinearLayout implements AlphaAnimator, RevealAn
                 (int) (searchBarHeight - searchBtnPadding * 2),
                 (int) (searchBarHeight - searchBtnPadding * 2));
         btnSearch.setLayoutParams(btnSearchLayoutParams);
-        btnSearch.setImageResource(R.drawable.ic_search);
+        btnSearch.setImageResource(icSearch);
         btnSearch.setVisibility(VISIBLE);
 
         // progress bar
@@ -424,8 +443,8 @@ public class LSearchView extends LinearLayout implements AlphaAnimator, RevealAn
         } else {
             final View myView = this;
 
-            int cx = myView.getRight() - dp2px(getContext(), 23); //32dp
-            int top = myView.getTop() + dp2px(getContext(), 25); //36dp
+            int cx = (int) (myView.getRight() - originX); //32dp
+            int top = (int) (myView.getTop() + originY); //36dp
             float finalRadius = hypo(myView.getWidth(), myView.getHeight());
 
             searchViewAnimator = ViewAnimationUtils.createCircularReveal(myView, cx, top, 0, finalRadius);

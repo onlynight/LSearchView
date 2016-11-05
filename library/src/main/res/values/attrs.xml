@@ -2,12 +2,48 @@
 <resources>
 
     <declare-styleable name="LSearchView">
+
+        <!-- search bar height;
+        the default is 48dp;-->
         <attr name="search_bar_height" format="dimension"/>
+
+        <!-- back button padding;
+        back button size = search_bar_height - search_button_padding*2;
+        the default is 12dp;-->
         <attr name="back_button_padding" format="dimension"/>
+
+        <!-- search button padding;
+        search button size = search_bar_height - search_button_padding*2;
+        the default is 12dp;-->
         <attr name="search_button_padding" format="dimension"/>
+
+        <!-- edit text view hint text;
+        no default;-->
         <attr name="search_hint" format="string"/>
+
+        <!-- search view background color;
+        the default is 0xaa000000;-->
         <attr name="search_bg_color" format="color"/>
+
+        <!-- search view animation duration time;
+        no default value;-->
         <attr name="anim_time" format="integer"/>
+
+        <!-- search view reveal animation start x from right;
+        the default is 23dp;-->
+        <attr name="anim_origin_x" format="dimension"/>
+
+        <!-- search view reveal animation start y from top;
+        the default is 23dp-->
+        <attr name="anim_origin_y" format="dimension"/>
+
+        <!-- search bar back button icon res;
+        the default is R.darwable.ic_back;-->
+        <attr name="back_btn_icon" format="reference"/>
+
+        <!-- search bar search button icon res;
+        the default is R.darwable.ic_search;-->
+        <attr name="search_btn_icon" format="reference"/>
     </declare-styleable>
 
 </resources>
