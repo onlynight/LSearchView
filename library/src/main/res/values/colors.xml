@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="list_item_background">#ffffff</color>
+    <color name="list_item_background_pressed">#dddddd</color>
+    <color name="list_item_border">#ffdadada</color>
+    <color name="background_normal_color">#ffffff</color>
+    <color name="background_pressed_color">#ebebeb</color>
+
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LSearchView">
+        <attr name="search_bar_height" format="dimension"/>
+        <attr name="back_button_padding" format="dimension"/>
+        <attr name="search_button_padding" format="dimension"/>
+        <attr name="search_hint" format="string"/>
+        <attr name="search_bg_color" format="color"/>
+        <attr name="anim_time" format="integer"/>
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.github.onlynight.lsearchview.MainActivity">
+
+    <include layout="@layout/part_toolbar"/>
+
+    <com.github.onlynight.library.lsearchview.LSearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:visibility="invisible"
+        app:anim_time="300"
+        app:search_bar_height="48dp"
+        app:search_bg_color="#aa000000"
+        app:search_hint="search something">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/l_search_view_bg"/>
+
+        </LinearLayout>
+
+    </com.github.onlynight.library.lsearchview.LSearchView>
+
+</FrameLayout>
