@@ -7,7 +7,7 @@ This is an Android L design search view. It support reveal animation, let's revi
 
 ##eg.1 HiQianBei
 This is an Chinese local app, so you can't install it from google play.It just use for demo.
-
+If you want to try it, you can download here: http://www.wandoujia.com/apps/com.superlity.hiqianbei
 ![hiqianbei_demo](./images/hiqianbei_demo.gif)
 
 ##eg.2 LSearchView
