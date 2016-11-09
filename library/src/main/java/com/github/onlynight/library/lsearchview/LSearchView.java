@@ -261,6 +261,10 @@ public class LSearchView extends LinearLayout implements AlphaAnimator, RevealAn
     }
 
     private void startAnimation() {
+        if ((searchViewBaseAnimator != null && searchViewBaseAnimator.isRunning()) ||
+                (searchViewAnimator != null && searchViewAnimator.isRunning())) {
+            return;
+        }
         startAlphaAnimation();
         startRevealAnim();
     }
@@ -294,7 +298,7 @@ public class LSearchView extends LinearLayout implements AlphaAnimator, RevealAn
 
     @Override
     public void onAlphaAnimationEnd() {
-        running = true;
+        running = false;
         setAlpha(defaultAlpha);
     }
 
