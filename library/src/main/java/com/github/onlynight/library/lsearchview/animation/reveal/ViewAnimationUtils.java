@@ -75,6 +75,7 @@ public class ViewAnimationUtils {
         revealLayout.attachRevealInfo(new RevealAnimator.RevealInfo(centerX, centerY, startRadius, endRadius,
                 new WeakReference<>(view)));
 
+
         if (LOLLIPOP_PLUS) {
             return new SupportAnimatorImpl(android.view.ViewAnimationUtils
                     .createCircularReveal(view, centerX, centerY, startRadius, endRadius), revealLayout);

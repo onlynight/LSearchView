@@ -1,6 +1,5 @@
 package com.github.onlynight.library.lsearchview;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -90,13 +89,13 @@ public class LSearchView extends LinearLayout implements AlphaAnimator, RevealAn
         init(typedArray);
     }
 
-    @TargetApi(21)
-    public LSearchView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs,
-                R.styleable.LSearchView, defStyleAttr, defStyleRes);
-        init(typedArray);
-    }
+//    @TargetApi(21)
+//    public LSearchView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+//        super(context, attrs, defStyleAttr, defStyleRes);
+//        TypedArray typedArray = getContext().obtainStyledAttributes(attrs,
+//                R.styleable.LSearchView, defStyleAttr, defStyleRes);
+//        init(typedArray);
+//    }
 
     private void init(TypedArray typedArray) {
         setOrientation(LinearLayout.VERTICAL);
@@ -412,12 +411,18 @@ public class LSearchView extends LinearLayout implements AlphaAnimator, RevealAn
 
     @Override
     public SupportAnimator startReverseAnimation() {
-        return this.revealInfo != null && this.revealInfo.hasTarget() && !this.mRunning ? ViewAnimationUtils.createCircularReveal(this.revealInfo.getTarget(), this.revealInfo.centerX, this.revealInfo.centerY, this.revealInfo.endRadius, this.revealInfo.startRadius) : null;
+        return this.revealInfo != null &&
+                this.revealInfo.hasTarget() &&
+                !this.mRunning ?
+                ViewAnimationUtils.createCircularReveal(
+                        this.revealInfo.getTarget(), this.revealInfo.centerX,
+                        this.revealInfo.centerY, this.revealInfo.endRadius,
+                        this.revealInfo.startRadius) : null;
     }
 
     @Override
     protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
-        if (this.mRunning && child == this.revealInfo.getTarget()) {
+        if (this.mRunning && this == this.revealInfo.getTarget()) {
             int state = canvas.save();
             this.revealPath.reset();
             this.revealPath.addCircle((float) this.revealInfo.centerX, (float) this.revealInfo.centerY, this.radius, Path.Direction.CW);
@@ -425,9 +430,9 @@ public class LSearchView extends LinearLayout implements AlphaAnimator, RevealAn
             boolean isInvalided = super.drawChild(canvas, child, drawingTime);
             canvas.restoreToCount(state);
             return isInvalided;
-        } else {
-            return super.drawChild(canvas, child, drawingTime);
         }
+
+        return super.drawChild(canvas, child, drawingTime);
     }
 
     private void startRevealAnim() {
