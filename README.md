@@ -3,6 +3,10 @@ LSearchView
 
 This is an Android L design search view. It support reveal animation, let's review.
 
+#Update
+- 2016.11.17 update 
+    I develop another library about ripple animation, it's a ripple animation layout you can use if anywhere you want(it is above android 4.0). Later i will develop a file explore use Material Design, and i will add some useful function to the ```LSearchView``` library.You can see the ```RippleEverywhere``` here https://github.com/onlynight/RippleEverywhere.
+
 #Preview
 
 ##eg.1 HiQianBei
