@@ -3,25 +3,26 @@ LSearchView
 
 This is an Android L design search view. It support reveal animation, let's review.
 
-#Update
+# Update
+
 - 2016.11.17 update
 
     I develop another library about ripple animation, it's a ripple animation layout you can use if anywhere you want(it is above android 4.0). Later i will develop a file explore use Material Design, and i will add some useful function to the ```LSearchView``` library.You can see the ```RippleEverywhere``` here https://github.com/onlynight/RippleEverywhere.
 
-#Preview
+# Preview
 
-##eg.1 HiQianBei
+## eg.1 HiQianBei
 This is an Chinese local app, so you can't install it from google play.It just use for demo.
 If you want to try it, you can download here: http://www.wandoujia.com/apps/com.superlity.hiqianbei
 
 ![hiqianbei_demo](./images/hiqianbei_demo.gif)
 
-##eg.2 LSearchView
+## eg.2 LSearchView
 This is the LSearchView demo, you can see the source code in this the ```demo``` module.
 
 ![LSearchView_Demo](./images/lsearchview_demo.gif)
 
-#build.gradle
+# build.gradle
 In your project root path ```build.gradle``` file, add this:
 
 ```groovy
@@ -41,7 +42,7 @@ dependencies {
 }
 ```
 
-#Sample Code
+# Sample Code
 
 layout file:
 
@@ -101,7 +102,7 @@ private void onBackSearch(){
 }
 ```
 
-#XML property explain
+# XML property explain
 
 ```xml
 <declare-styleable name="LSearchView">
@@ -150,7 +151,7 @@ private void onBackSearch(){
 </declare-styleable>
 ```
 
-#API explain
+# API explain
 
 ```java
 /**
@@ -194,13 +195,13 @@ public void showWithAnim();
 public void hideWithAnim();
 ```
 
-#THANKS
+# THANKS
 
 [nineoldandroids]
 
 [CircularReveal]
 
-#License
+# License
 
 ```
 Copyright 2016 onlynight
